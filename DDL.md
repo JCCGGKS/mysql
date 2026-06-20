@@ -204,7 +204,7 @@ SELECT trx_id FROM information_schema.innodb_trx WHERE trx_mysql_thread_id = CON
 
 对于不支持`instant`的版本可以使用一些在线工具
 
-【Percona Toolkit（PT 工具包）里的 pt-online-schema-change】
++ 【Percona Toolkit（PT 工具包）里的 pt-online-schema-change】
 ```
 1. 创建一个和原表结构相同的新表，并在新表执行ddl
 2. 分批将原表的数据复制到新表
