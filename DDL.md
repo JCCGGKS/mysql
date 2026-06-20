@@ -116,7 +116,7 @@ SELECT trx_id FROM information_schema.innodb_trx WHERE trx_mysql_thread_id = CON
 【不同algorithm】
 ```shell 
 `alter table test add column status tinyint, ALGORITHM=INPLACE, LOCK=NONE;`
-`alter table test add column status tinyint, ALGORITHM=INSTANT;` # 底层强制LOCK=NONEC
+`alter table test add column status tinyint, ALGORITHM=INSTANT;` # 底层强制LOCK=NONE
 ```
 | 算法    | 版本     | 原理                                        | 性能           | 允许并发 DML |
 | ------- | -------- | ------------------------------------------- | -------------- | ------------ |
@@ -197,6 +197,7 @@ SELECT trx_id FROM information_schema.innodb_trx WHERE trx_mysql_thread_id = CON
 
 ## 千万级别数据
 + `algorithm=instant`
+
 | 操作类型 | 执行算法 | 总耗时 | 影响行数 | 核心执行特征 |
 | ---- | ---- | ---- | ---- | ---- |
 | 新增列（ADD COLUMN） | ALGORITHM=INSTANT | 0.08 秒 | 0 行 | 仅修改元数据字典，不触碰任何存量数据，毫秒级完成 |
